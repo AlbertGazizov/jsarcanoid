@@ -1,0 +1,8 @@
+<h2>Set points</h2>
+
+<%= form_tag(set_points_user_path, :method => "post") do %>
+  <%= label_tag(:points, "Points:") %>
+  <%= text_field_tag(:points) %>
+  <%= submit_tag("Set") %>
+<% end %>
+
