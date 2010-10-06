@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    debugger
     respond_to do |format|
       format.html # show.html.erb
       format.json  { render :json => @user }
@@ -17,7 +18,6 @@ class UsersController < ApplicationController
   end
 
   def update_points
-    debugger
     @user = User.find(params[:id])
     @user.max_points = params[:points]
     respond_to do |format|

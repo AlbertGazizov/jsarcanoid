@@ -11,9 +11,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username, :email, :case_sensitive => false
 
   # For username or email login
-  def self.find_for_database_authentication(conditions)
-    value = conditions[authentication_keys.first]
-    where(["username = :value OR email = :value", { :value => value }]).first
-  end
+#  def self.find_for_database_authentication(conditions)
+#    value = conditions[authentication_keys.first]
+#    where(["username = :value OR email = :value", { :value => value }]).first
+#  end
 end
 

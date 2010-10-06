@@ -23,11 +23,11 @@
 
 			<ul class="tabbed">
 			  <li><%= link_to 'Home', root_path %></li>
-			  <li><%= link_to 'Play Demo', root_path %></li>
+			  <li><%= link_to 'Play Demo', game_path %></li>
 			</ul>
     <div class="user">
       <% if user_signed_in? %>
-        <%= link_to current_user, current_user_path %> or <%= link_to "Registration", new_user_registration_path %>
+        <%= link_to current_user.username, user_path(current_user) %> | <%= link_to "Logout", destroy_user_session_path %>
       <% else %>
         <%= link_to "Login", new_user_session_path %> or <%= link_to "Registration", new_user_registration_path %>
       <% end %>
@@ -41,6 +41,7 @@
 
 	<div id="main_wrapper">
 		<div id="main">
+		  <%= flash[:alert] %>
 		  <%= yield %>
 		</div>
 

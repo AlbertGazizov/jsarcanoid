@@ -255,6 +255,10 @@ input.button:active {border-style: inset;}
 	margin-right: auto;
 }
 
+#canvas{
+  margin: 0 auto;
+}
+
 
 /* Images */
 
@@ -465,6 +469,7 @@ div.comment_list {
 #main {
 	/*background: url('/images/main.gif') no-repeat;*/
 	padding: 24px;
+	text-align:center;
 }
 #content_wrapper {width: 690px;}
 #content {padding: 0 20px;}
