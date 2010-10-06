@@ -1,4 +1,5 @@
 class PointsController < ApplicationController
+  before_filter require_authentication!
   def edit
   end
 

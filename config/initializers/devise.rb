@@ -3,7 +3,7 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
-  config.mailer_sender = "deeper4k@gmail.com"
+  config.mailer_sender = "please-change-me@config-initializers-devise.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -20,7 +20,7 @@ Devise.setup do |config|
   # authenticating an user, both parameters are required. Remember that those
   # parameters are used only when authenticating and not when retrieving from
   # session. If you need permissions, you should implement that in a before filter.
-  config.authentication_keys = [ :email, :username ]
+  # config.authentication_keys = [ :email ]
 
   # Tell if authentication through request.params is enabled. True by default.
   # config.params_authenticatable = true
@@ -46,7 +46,7 @@ Devise.setup do |config|
   config.encryptor = :bcrypt
 
   # Setup a pepper to generate the encrypted password.
-  config.pepper = "2936c960f3468f17b767d7f8b30c6babc445a41d2854ef4e7876a45c96f3de8d0b7c51c3748fa7fd91dfa6214de94ae2b367d9d757ddae4a740a9c114dbd2765"
+  config.pepper = "1ddd0f600a4f40254398c49136eb56ff6f56531a1089e4165fafe5200e7a7cca2f2bbb0736175ceccb503bab96363989ac95433709bbd57c5c71c4e84b100f75"
 
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time
