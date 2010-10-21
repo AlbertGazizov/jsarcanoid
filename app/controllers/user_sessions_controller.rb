@@ -6,6 +6,7 @@ class UserSessionsController < ApplicationController
   end
 
   def create
+    #debugger
     sign = user_signed_in?
     #resource = warden.authenticate(:scope => :user)
 

@@ -16,6 +16,9 @@ gem 'capistrano'
 # To use debugger
 gem 'ruby-debug'
 
+# HEroku
+#gem 'heroku'
+
 # Bundle the extra gems:
 # gem 'bj'
 gem 'nokogiri'

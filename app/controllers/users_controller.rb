@@ -17,13 +17,16 @@ class UsersController < ApplicationController
   end
 
   def update_points
-    @user = User.find(params[:id])
-    @user.max_points = params[:points]
+    #@user = User.find(params[:id])
+    #@user.max_points = params[:points]
+    p "AAAAAAAAAAA"
+    p current_user.max_points
+    current_user.max_points = params[:points] if params[:points] && (params[:points].to_i > current_user.max_points)
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to(@user, :notice => 'User\'s points was successfully updated!') }
+      if current_user.save
+        format.html { redirect_to(current_user, :notice => 'User\'s points was successfully updated!') }
       else
-        format.html { redirect_to(@user, :notice => 'Eror was occured!') }
+        format.html { redirect_to(current_user, :notice => 'Eror was occured!') }
       end
     end
   end
