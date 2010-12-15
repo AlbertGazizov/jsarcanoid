@@ -164,12 +164,13 @@ function gameOver()
     ctx.fillStyle = fs;
     
     var r, user_id;
-    user_id = document.getElementByClass("user_id").value;
+    user_id = document.getElementById("user_id").innerHTML;
     if(window.XMLHttpRequest)
         r = new XMLHttpRequest();
     else
         r = new ActiveXObject("Microsoft.XMLHTTP");
-    r.open("POST", "users/"+user_id+"/set/5", true);
+
+    r.open("POST", "/users/"+user_id+"/update_points/", true);
     r.onreadystatechange = function() {
         if(r.readyState == 4)
             document.getElementById("authblock").innerHTML = r.responseText;

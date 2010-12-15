@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  protect_from_forgery :only => [:index]
+  
   def index
     @users = User.all
 
@@ -17,11 +19,8 @@ class UsersController < ApplicationController
   end
 
   def update_points
-    #@user = User.find(params[:id])
-    #@user.max_points = params[:points]
-    p "AAAAAAAAAAA"
-    p current_user.max_points
-    current_user.max_points = params[:points] if params[:points] && (params[:points].to_i > current_user.max_points)
+    current_user.max_points = params[:points].to_i if params[:points] && (params[:points].to_i > current_user.max_points.to_i)
+
     respond_to do |format|
       if current_user.save
         format.html { redirect_to(current_user, :notice => 'User\'s points was successfully updated!') }

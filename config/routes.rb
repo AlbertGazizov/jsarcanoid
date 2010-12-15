@@ -1,8 +1,8 @@
 Rubyarcanoid::Application.routes.draw do
   devise_for :users
   resources :users do
-    get 'set_points', :on => :member
-    #post 'update_points', :on => :member
+    #get 'set_points', :on => :member
+    post 'update_points', :on => :member
     resources :points
   end
   

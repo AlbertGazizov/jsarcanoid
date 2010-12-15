@@ -419,6 +419,9 @@ div.comment_list {
   display:inline !important;
   font-size:100% !important;
 }
+#user_id{
+    display: none;
+}
 /* Navigation */
 
 #navigation {
