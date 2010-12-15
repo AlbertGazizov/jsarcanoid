@@ -160,7 +160,6 @@ table.data_table tr.even td {background: #F5F5F5;}
 
 .error, .notice, .success {
 	font-size: 1.1em;
-	border: 1px solid #DDD;
 	margin-bottom: 1em;
 	padding: 0.6em 0.8em;
 }
@@ -173,9 +172,7 @@ table.data_table tr.even td {background: #F5F5F5;}
 .error a {color: #8A1F11;}
 
 .notice {
-	background: #FFF6BF;
-	border-color: #FFD324;
-	color: #514721;
+	color: green;
 }
 .notice a {color: #514721;}
 
