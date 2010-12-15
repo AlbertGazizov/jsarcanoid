@@ -40,6 +40,9 @@ gem 'carrierwave', :git => 'git://github.com/jnicklas/carrierwave.git', :ref => 
 gem 'aws', '2.3.6'
 gem 'mini_magick', '1.2.5'
 
+#Deploy
+gem 'heroku'
+
 group :test do
   gem 'cucumber', '0.8.5'
   gem 'cucumber-rails', '0.3.2'
