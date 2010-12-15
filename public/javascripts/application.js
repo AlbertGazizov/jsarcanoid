@@ -8,19 +8,20 @@ var interval;
 var WIDTH;
 var HEIGHT;
 
-var score = 0;
+var score;
 var x;
 var y;
-var speed = 3;
-var accel = 1.02;
-var rand = 0.15;
+var speed;
+var accel = 0.06;
+var frict = 0.07;
+var paddlecurv = 0.7;
 var angle;
 var radius = 3;
 
 var paddlex;
 var paddleh = 3;
 var paddlew = 75;
-var paddlel = 10;
+var paddlel = 14;
 var paddles = 5;
 
 var right = false;
@@ -29,25 +30,29 @@ var left = false;
 var backColor = '#333333'
 var ballColor = '#FF3333'
 var paddColor = '#999999'
-var textColor = '#30D5C8';
+var textColor = '#A7B1B7';
 
 function init()
 {
     canvas = document.getElementById('canvas');
     ctx = canvas.getContext('2d');
+    ctx.textAlign = 'left';
+    ctx.font = "bold 15px sans-serif";
     WIDTH = canvas.width;
     HEIGHT = canvas.height;
     x = WIDTH / 2;
     y = HEIGHT / 2;
     paddlex = WIDTH / 2 - paddlew / 2;
     angle = Math.random() > 0.5 ? 3*Math.PI/7 : Math.PI - 3*Math.PI/7;
+    score = 0;
+    speed = 3;
 
     interval = setInterval(draw, 10);
 }
 
 function drawScore()
 {
-    ctx.fillText(score,paddleh,HEIGHT-1);
+    ctx.fillText(score,paddleh,HEIGHT-2);
 }
 
 function drawBall()
@@ -96,6 +101,11 @@ function onKeyUp(e)
 
     if (keycode == 37) left = false;
     if (keycode == 39) right = false;
+    if (keycode == 78)
+    {
+	clearInterval(interval);
+	init();
+    }
 }
 
 function dx()
@@ -129,13 +139,12 @@ function draw()
     if (y + dy() - radius < 0)
     {
 	angle = -angle;
-	speed *= accel;
+	speed += accel;
 	score += 1;
     }
     if (x + dx() + radius > WIDTH || x + dx() - radius< 0)
     {
 	angle = Math.PI - angle;
-	speed *= accel;
     }
 
     if (y + dy() + radius > HEIGHT - paddleh - paddlel &&
@@ -143,10 +152,10 @@ function draw()
 	x > paddlex && x < paddlex + paddlew)
     {
 	angle = -angle;
-	a = Math.random()*Math.PI*rand;
-	if (left) angle -= a;
-	if (right) angle += a;
-	speed *= accel;
+	if (left) angle -= Math.PI*frict;
+	if (right) angle += Math.PI*frict;
+	angle += paddlecurv*((x-(paddlex+paddlew/2))/paddlew);
+	speed += accel;
     }
     if (y + dy() + radius > HEIGHT)
 	gameOver();
@@ -158,11 +167,12 @@ function draw()
 function gameOver()
 {
     clearInterval(interval);
-    fs = ctx.fillStyle;
+    // fs = ctx.fillStyle;
     ctx.fillStyle = textColor;
-    ctx.fillText('GAME OVER',WIDTH/2-30,HEIGHT/2);
-    ctx.fillStyle = fs;
-    
+    ctx.textAlign = "center";
+    ctx.fillText('Game over. To start a new game, press N.',WIDTH/2,HEIGHT/2);
+    // ctx.fillStyle = fs;
+
     var r, user_id;
     user_id = document.getElementById("user_id").innerHTML;
     if(window.XMLHttpRequest)
