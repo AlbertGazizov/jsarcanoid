@@ -1,5 +1,5 @@
 Rubyarcanoid::Application.routes.draw do
-  devise_for :users, :controllers => {:sessions => 'user_sessions'}
+  devise_for :users
   resources :users do
     get 'set_points', :on => :member
     #post 'update_points', :on => :member

@@ -163,13 +163,13 @@ function gameOver()
     ctx.fillText('GAME OVER',WIDTH/2-30,HEIGHT/2);
     ctx.fillStyle = fs;
     
-    var r, url;
-    //url = document.getElementById("regpass").value;
+    var r, user_id;
+    user_id = document.getElementByClass("user_id").value;
     if(window.XMLHttpRequest)
         r = new XMLHttpRequest();
     else
         r = new ActiveXObject("Microsoft.XMLHTTP");
-    r.open("POST", "users/5/points/5", true);
+    r.open("POST", "users/"+user_id+"/set/5", true);
     r.onreadystatechange = function() {
         if(r.readyState == 4)
             document.getElementById("authblock").innerHTML = r.responseText;
